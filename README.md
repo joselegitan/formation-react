@@ -19,3 +19,19 @@
 
 npx create-react-app my-app
 ```
+
+### Test de deploiement
+```shell
+npm install -g serve
+```
+
+Ajouter cette ligne dans les scripts de votre package.json :
+```json
+"prod": "serve -s build"
+```
+
+### Test Web-vitals
+Dans index.js mettre a a jour la derniere ligne
+```js
+reportWebVitals(console.log);
+```
