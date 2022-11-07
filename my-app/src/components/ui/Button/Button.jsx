@@ -1,11 +1,17 @@
+import {Button as MuiButton} from "@mui/material";
+
 function Button({ loading, children, className, ...props }) {
   return (
-    <button className={`Button ${className}`} {...props}>
+    <MuiButton
+      className={`Button ${className}`}
+      {...props}
+      color={'primary'}
+    >
       {loading
         ? 'Loading'
         : children
       }
-    </button>
+    </MuiButton>
   );
 }
 

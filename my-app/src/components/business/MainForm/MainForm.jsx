@@ -7,8 +7,18 @@ import {getRandomInt} from "../../../utils/helpers";
 import {mainFormValidation} from "../../../utils/validation";
 import CheckboxGroup from "../../ui/CheckboxGroup/CheckboxGroup";
 import InitTab from "./InitTab";
+import {Paper} from "@mui/material";
+import styled from "@emotion/styled";
 
-function MainForm({ multipleOptions, onComplete }) {
+const Form = styled(Paper)`
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+`
+
+function MainForm({ multipleOptions, onComplete, className }) {
   const [formValue, setFormValue] = useState({})
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -71,7 +81,7 @@ function MainForm({ multipleOptions, onComplete }) {
   const disabled = loading || JSON.stringify(errors) !== '{}'
 
   return (
-    <form className="App-mainform" onSubmit={onSubmit}>
+    <Form component={'form'} onSubmit={onSubmit} className={className}>
       <InitTab
         onClick={onResetForm}
       />
@@ -80,7 +90,7 @@ function MainForm({ multipleOptions, onComplete }) {
         name="gender"
         label="Genre"
         className="Mainform-gender"
-        value={formValue.gender}
+        value={formValue.gender || ''}
         onChange={onSelect('gender')}
         options={options}
         error={errors.gender}
@@ -116,10 +126,11 @@ function MainForm({ multipleOptions, onComplete }) {
         type={'submit'}
         loading={loading}
         disabled={disabled}
+        variant={'contained'}
       >
         Submit
       </Button>
-    </form>
+    </Form>
   );
 }
 

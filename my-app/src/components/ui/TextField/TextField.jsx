@@ -1,15 +1,20 @@
-function TextField({ name, label, value, error, onChange }) {
+import {TextField as MuiTextField} from "@mui/material";
+
+function TextFieldInput({ name, label, value, error, onChange, className }) {
   const insideChange = (e) => onChange(e.target.value)
 
   return (
-    <div className='Input Input-textfield'>
-      <div className={'Input-aligned'}>
-        <p className={'Input-label'}>{label}</p>
-        <input type="text" id={name} name={name} value={value} onChange={insideChange} />
-      </div>
-      {!!error && <p className={'Input-error'}>{error}</p>}
-    </div>
+    <MuiTextField
+      name={name}
+      label={label}
+      className={className}
+      variant={'outlined'}
+      error={!!error}
+      helperText={error}
+      onChange={insideChange}
+      value={value}
+    />
   );
 }
 
-export default TextField;
+export default TextFieldInput;
