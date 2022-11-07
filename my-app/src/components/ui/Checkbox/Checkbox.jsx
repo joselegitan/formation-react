@@ -1,4 +1,4 @@
-import {FormControl, InputLabel, Checkbox as MuiCheckbox, FormControlLabel} from "@mui/material";
+import {Checkbox as MuiCheckbox, FormControlLabel} from "@mui/material";
 
 function Checkbox({ name, label, value, checked, onChange, className }) {
   const insideChange = (e) => {

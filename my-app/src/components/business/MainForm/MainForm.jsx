@@ -9,6 +9,7 @@ import CheckboxGroup from "../../ui/CheckboxGroup/CheckboxGroup";
 import InitTab from "./InitTab";
 import {Paper} from "@mui/material";
 import styled from "@emotion/styled";
+import usePosts from "../../../hooks/usePost";
 
 const Form = styled(Paper)`
   padding: 20px;
@@ -19,6 +20,7 @@ const Form = styled(Paper)`
 `
 
 function MainForm({ multipleOptions, onComplete, className }) {
+  const { fetchMore } = usePosts()
   const [formValue, setFormValue] = useState({})
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -77,7 +79,7 @@ function MainForm({ multipleOptions, onComplete, className }) {
     setLoading(false)
   }
 
-  const options = [undefined, 'Homme', 'Femme', 'Autre'].map((e) => ({ value: e, label: e }))
+  const options = ['Homme', 'Femme', 'Autre'].map((e) => ({ value: e, label: e }))
   const disabled = loading || JSON.stringify(errors) !== '{}'
 
   return (
@@ -122,6 +124,9 @@ function MainForm({ multipleOptions, onComplete, className }) {
         onChange={onChange('multiple')}
         options={multipleOptions}
       />
+      <Button variant={'outlined'} onClick={fetchMore}>
+        Afficher plus
+      </Button>
       <Button
         type={'submit'}
         loading={loading}

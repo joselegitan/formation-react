@@ -2,9 +2,12 @@ import MainForm from "../components/business/MainForm/MainForm";
 import {useState} from "react";
 import MainFormVisualizer from "../components/business/MainFormVisualizer/MainFormVisualizer";
 import ReactHookForm from "../components/business/ReactHookForm/ReactHookForm";
+import usePosts from "../hooks/usePost";
+import {CircularProgress} from "@mui/material";
 
 function HomePage() {
-  const [data, setData] = useState({})
+  const [formData, setData] = useState({})
+  const { data, loading, fetchMore } = usePosts()
   const [dataHook, setDataHook] = useState({ multiple: [], name: '', lover: true })
 
   const onSubmit = (formValue) => {
@@ -14,14 +17,18 @@ function HomePage() {
     setDataHook((prev) => ({ ...prev, ...formValue }))
   }
 
-  const multipleOptions = [
-    { value: '1', label: 'Choix 1' },
-    { value: '2', label: 'Choix 2' },
-    { value: '3', label: 'Choix 3' },
-  ]
+  const multipleOptions = data.map((e) => ({
+    value: e.id, label: e.body.slice(0, 30)
+  }))
+
   const selectedMultipleOptions = multipleOptions.filter((e) =>
     (data?.multiple || []).includes(e.value)
   ).map((e) => e.label)
+
+
+  if (loading) return (
+    <CircularProgress />
+  )
 
   return (
     <main>
@@ -30,10 +37,10 @@ function HomePage() {
           multipleOptions={multipleOptions}
           onComplete={onSubmit}
         />
-        {JSON.stringify(data) !== '{}' && (
+        {JSON.stringify(formData) !== '{}' && (
           <MainFormVisualizer
             data={{
-              ...data,
+              ...formData,
               multiple: selectedMultipleOptions
             }}
           />
