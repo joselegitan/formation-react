@@ -1,15 +1,20 @@
 # Formation React
 
-## Exercice 2
-### Fetch Data / Post data
-- Utiliser la librairie axios
-- Recuperer une liste de post (https://jsonplaceholder.typicode.com/) et afficher les posts
-- Ajouter un systeme de fetchMore
-- Ajouter un systeme de POST du formulaire
+## Exercice 3
+### Utiliser Redux 
+- Creer un context au niveau de la home-page permettant de choisir l'affichage d'une page avec un titre, un boutton fetchMore et une liste des donnees associees (posts ou photos)
+- Chaque post/photo doit avoir un select permettant de choisir une quantite et un boutton acheter pour enregistrer la commande
+- le Header doit avoir une icone avec le nombre de produit 'achete' et un boutton permettant de changer la couleur du titre 
+- Creer 2 stores : 1 UI (ex light/dark mode) et 1 gestion panier
 
-### Styliser
-- Styliser l'application cf(exercice pdf p.1)
-- Utiliser la librairie [Material-ui](https://mui.com/material-ui/getting-started/overview/)
+### Utiliser les Routers
+- Avoir 3 pages distinctes:
+-- les pages de liste (ne plus utiliser le container mais le HashRouter)
+-- une page panier recapitulant la commande
+-- une page commande envoye !
 
-### Amelioration 
-- utiliser un systeme de hook pour la gestion des posts
+## Exercice 4
+### Portage sur Nextjs
+- Porter l'application precedente sur NextJs
+- Ajouter un systeme de page / avec recuperation server-side d'un post en fonction de l'id : /posts/1 (par exemple) (- Ajouter un systeme ([id]/slug)
+- Ajouter un systeme de recuperation du user de la page client-side
