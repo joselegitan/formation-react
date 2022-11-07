@@ -7,23 +7,26 @@ import {CircularProgress} from "@mui/material";
 
 function HomePage() {
   const [formData, setData] = useState({})
-  const { data, loading, fetchMore } = usePosts()
+  const { data, loading, fetchMore, postData } = usePosts()
   const [dataHook, setDataHook] = useState({ multiple: [], name: '', lover: true })
 
-  const onSubmit = (formValue) => {
-    setData(formValue)
+  const onSubmit = async (formValue) => {
+    const response = await postData(formValue)
+    setData(response)
   }
   const onSubmitHook = (formValue) => {
     setDataHook((prev) => ({ ...prev, ...formValue }))
   }
 
-  const multipleOptions = data.map((e) => ({
+  const multipleOptions = (data || []).map((e) => ({
     value: e.id, label: e.body.slice(0, 30)
   }))
 
   const selectedMultipleOptions = multipleOptions.filter((e) =>
-    (data?.multiple || []).includes(e.value)
+    (formData?.multiple || []).includes(e.value)
   ).map((e) => e.label)
+
+  // console.log('multiple', multipleOptions)
 
 
   if (loading) return (
@@ -35,6 +38,8 @@ function HomePage() {
       <div className={'HomePage-layout'}>
         <MainForm
           multipleOptions={multipleOptions}
+          loadingPost={loading}
+          fetchMore={fetchMore}
           onComplete={onSubmit}
         />
         {JSON.stringify(formData) !== '{}' && (

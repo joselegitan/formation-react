@@ -11,29 +11,33 @@ export default function usePosts () {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
     setLoading(false)
 
-    console.lo('response', )
-
     setData((prev) => [
       ...(prev || []),
       ...response.data.slice(skip * 5, (skip * 5) +5).filter((e) => (prev || []).findIndex((a) => a.id === e.id) < 0)
     ])
-  }, [])
+    setSkip((prev) => prev + 1)
+  }, [skip])
 
   useEffect(() => {
     (async () => await fetchData())()
   }, [])
 
   const fetchMore = async () => {
-    console.log('cool')
-    setSkip((prev) => prev + 1)
-
-    console.log('skip', skip)
     await fetchData()
   }
+
+  const postData = useCallback(async (formValue) => {
+    setLoading(true)
+    const response = await axios.post('https://jsonplaceholder.typicode.com/posts', formValue)
+    setLoading(false)
+    setSkip(0)
+    return response.data
+  }, [])
 
   return {
     data,
     loading,
     fetchMore,
+    postData
   }
 }

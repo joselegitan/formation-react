@@ -1,15 +1,12 @@
 import {useState} from "react";
 import Select from "../../ui/Select/Select";
 import TextField from "../../ui/TextField/TextField";
-import {wait} from "../../../utils/helpers";
 import Button from "../../ui/Button/Button";
-import {getRandomInt} from "../../../utils/helpers";
 import {mainFormValidation} from "../../../utils/validation";
 import CheckboxGroup from "../../ui/CheckboxGroup/CheckboxGroup";
 import InitTab from "./InitTab";
 import {Paper} from "@mui/material";
 import styled from "@emotion/styled";
-import usePosts from "../../../hooks/usePost";
 
 const Form = styled(Paper)`
   padding: 20px;
@@ -19,8 +16,7 @@ const Form = styled(Paper)`
   gap: 20px;
 `
 
-function MainForm({ multipleOptions, onComplete, className }) {
-  const { fetchMore } = usePosts()
+function MainForm({ multipleOptions, onComplete, className, fetchMore, loadingPost }) {
   const [formValue, setFormValue] = useState({})
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -63,15 +59,7 @@ function MainForm({ multipleOptions, onComplete, className }) {
     const validationErrors = mainFormValidation(formValue)
 
     if (JSON.stringify(validationErrors) === '{}') {
-      await wait(3)
-      const key = getRandomInt(2)
-
-      if (key < 1) {
-        setGlobalError('Erreur Server ')
-      } else {
-        alert(JSON.stringify(formValue))
-        onComplete(formValue)
-      }
+      onComplete(formValue)
     } else {
       setErrors(validationErrors)
     }
@@ -124,7 +112,7 @@ function MainForm({ multipleOptions, onComplete, className }) {
         onChange={onChange('multiple')}
         options={multipleOptions}
       />
-      <Button variant={'outlined'} onClick={fetchMore}>
+      <Button variant={'outlined'} onClick={fetchMore} loading={loadingPost}>
         Afficher plus
       </Button>
       <Button
