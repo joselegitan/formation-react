@@ -1,37 +1,27 @@
 # Formation React
 
-## Initialiser un projet React.js
+(utile pour avoir des fonctions et syntaxe ES6 : https://webapplog.com/es6/)
 
-### Mise en place de l'environnement
+## Exercice apprendre a generiser un composant
+### Definition d'une liste
+- Definir ses props (le composant a besoin de quoi pour fonctionner)
+- Definir les differents etats de la liste > definir les states et useEffect associes
+- Definir les enfants
 
-- Installer Node.js : [ICI](https://nodejs.org/en/)
-- Installer le plugin React dans le navigateur : [ICI](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- Installer un editeur de texte (exemple gratuit [ATOM](https://flight-manual.atom.io/getting-started/sections/installing-atom/)) 
+### Definition d'une liste row (enfant)
+- Definir props bases sur tous les scenarios possibles
+- Trouver occurences dans les differentes possibilites du composant
+- Definir les etats possibles / useEffect / ...
+- Definir les enfants
 
-### Initialisation du projet
-```shell
-# avec yarn
-# npm install --global yarn
-# yarn global add create-react-app
+### En se basant sur les instructions precedentes
+* Faire un composant Generic ListMenu et definir des entrees mocks
 
-# clean cache si necessaire
-# npm cache clean --force
-
-npx create-react-app my-app
-```
-
-### Test de deploiement
-```shell
-npm install -g serve
-```
-
-Ajouter cette ligne dans les scripts de votre package.json :
-```json
-"prod": "serve -s build"
-```
-
-### Test Web-vitals
-Dans index.js mettre a a jour la derniere ligne
-```js
-reportWebVitals(console.log);
-```
+* Faire un composant Generic ProductItem avec :
+    * une image
+    * un titre
+    * une description
+    * une liste d'attribut <!> attention le productItem doit etre capable de gerer 2 types de produit avec des attributs differents <!>
+    * action de select de quantite 1 a 10 pour un type de produit et un textField pour l'autre
+    * un boutton pour enregistrer le choix > au click une popup de validation doit apparaitre (cancel reinitialise la valeur / ok l'enregistre)
+    * le parent de ProductItem doit pouvoir enregistrer les deux types de produits separement pour afficher les choix
