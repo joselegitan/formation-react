@@ -1,0 +1,30 @@
+.sidebar {
+    overflow-x: hidden;
+}
+
+.sidebar-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-open {
+    transform: rotate(180deg);
+}
+.icon-close {
+    transform: rotate(0deg);
+}
+
+.sidebar-open {
+    width: 400px;
+}
+.sidebar-close {
+    width: 100px;
+}

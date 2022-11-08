@@ -1,9 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import SideBar from "./components/SideBar/Sidebar";
+import {useState} from "react";
 
 function App() {
+  const [sidebarOpen, setSideBarOpen] = useState(true)
+
   return (
     <div className="App">
+      <SideBar isOpen={sidebarOpen} onClick={setSideBarOpen} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
