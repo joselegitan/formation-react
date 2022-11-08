@@ -1,35 +1,44 @@
 import logo from '../../../logo.svg';
 import './Header.css';
+import IconButton from "../IconButton/IconButton";
+import NightlightIcon from '@mui/icons-material/Nightlight';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import {useUi} from "../../../contexts/ui";
+import styled from "@emotion/styled";
+import { useSelector, useDispatch } from 'react-redux';
+import {selectMode, setMode} from "../../../slices/ui";
+import {Link, LogoLink} from "../../ui/Link/Link";
+
+const SIconButton = styled(IconButton)`
+  color: white;
+`
 
 function Header() {
+  const mode = useSelector(selectMode)
+  const dispatch = useDispatch();
+
   return (
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      <LogoLink href={'/'}>
+        <img src={logo} className="App-logo" alt="logo" />
+      </LogoLink>
       <div className="Header-links">
-        <a
+        <Link
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
+          href="/cart"
           rel="noopener noreferrer"
         >
-          Hello React
-        </a>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          Cart
+        </Link>
+        <SIconButton
+          size={'large'}
+          onClick={() => dispatch(setMode())}
         >
-          Learn React
-        </a>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Live React
-        </a>
+          {mode === 'light'
+            ? <NightlightIcon />
+            : <LightModeIcon />
+          }
+        </SIconButton>
       </div>
     </header>
   );
