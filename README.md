@@ -4,7 +4,7 @@
 
 ## Exercice apprendre a generiser un composant
 ### Definition d'une liste
-- Definir ses props (le composant a besoin de quoi pour fonctionner)
+- Definir ses props (le composant a besoin de quoi pour fonctionner / ses differentes declinaisons)
 - Definir les differents etats de la liste > definir les states et useEffect associes
 - Definir les enfants
 
@@ -25,3 +25,6 @@
     * action de select de quantite 1 a 10 pour un type de produit et un textField pour l'autre
     * un boutton pour enregistrer le choix > au click une popup de validation doit apparaitre (cancel reinitialise la valeur / ok l'enregistre)
     * le parent de ProductItem doit pouvoir enregistrer les deux types de produits separement pour afficher les choix
+  
+* Faire les items (Photos / Posts / Filters) de la page 1 de exercice.pdf
+* Faire un systeme de filtre / un systeme loadMore
