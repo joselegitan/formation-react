@@ -12,6 +12,7 @@ import {
 import CartPage from "./pages/CartPage";
 import {ThemeProvider} from "@mui/material/styles";
 import theme from "./utils/theme";
+import {DataProvider} from "./contexts/data";
 
 const router = createBrowserRouter([
   {
@@ -27,25 +28,14 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <DataProvider>
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </DataProvider>
     </Provider>
   </React.StrictMode>
 );
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <Provider store={configureStore}>
-//       <div className="App">
-//         <Header />
-//         <Route path="/" component={App} />
-//         <Route path="/cart" component={UserPage} />
-//       </div>
-//     </Provider>
-//   </React.StrictMode>
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

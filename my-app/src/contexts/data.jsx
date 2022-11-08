@@ -1,8 +1,19 @@
-import {useCallback, useEffect, useState} from "react";
+import {
+  createContext,
+  useCallback, useContext, useEffect,
+  useState,
+} from 'react';
 import axios from "axios";
 
-export default function usePosts () {
-  const [data, setData] = useState()
+export const DataContext = createContext({
+  data: [],
+  loading: false,
+  fetchMore: async () => {},
+  postData: async () => {}
+});
+
+export const DataProvider = ({ children }) => {
+  const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [skip, setSkip] = useState(0)
 
@@ -19,6 +30,7 @@ export default function usePosts () {
   }, [skip])
 
   useEffect(() => {
+    // console.log('start')
     (async () => await fetchData())()
   }, [])
 
@@ -34,10 +46,18 @@ export default function usePosts () {
     return response.data
   }, [])
 
-  return {
-    data,
-    loading,
-    fetchMore,
-    postData
-  }
-}
+  return (
+    <DataContext.Provider
+      value={{
+        data,
+        loading,
+        fetchMore,
+        postData,
+      }}
+    >
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+export const useData = () => useContext(DataContext)
