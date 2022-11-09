@@ -1,0 +1,14 @@
+.App-header {
+  background-color: #282c34;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.Header-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

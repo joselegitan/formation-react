@@ -14,6 +14,18 @@
 -- une page commande envoye !
 
 ## Exercice 4
+reference: https://nextjs.org/learn
+
+afin de porter l'application sur Nextjs : 
+```shell
+npx create-next-app@latest nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
+```
+
+Dans nextjs-blog/pages ajouter un ficher : _app.jsx (celui-ci est un fichier ou on met les providers et qui s'qpplique sur tout le site) client-side
+Dans nextjs-blog/pages ajouter un ficher : _document.jsx (celui-ci gere en general les head et la logique server necessaire pour chaque page)
+Dans nextjs le dossier page represente chaque route
+Pour faire une url comme ceci : /posts/:id  il faut faire un fichier : /pages/posts/[id].jsx
+
 ### Portage sur Nextjs
 - Porter l'application precedente sur NextJs
 - Ajouter un systeme de page / avec recuperation server-side d'un post en fonction de l'id : /posts/1 (par exemple) (- Ajouter un systeme ([id]/slug)
