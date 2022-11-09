@@ -6,7 +6,8 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import styled from "@emotion/styled";
 import { useSelector, useDispatch } from 'react-redux';
 import {selectMode, setMode} from "../../../slices/ui";
-import {Link, LogoLink} from "../../ui/Link/Link";
+import {LogoLink} from "../../ui/Link/Link";
+import CartIcon from "./CartIcon";
 
 const SIconButton = styled(IconButton)`
   color: white;
@@ -22,9 +23,7 @@ function Header() {
         <img src={logo} className="App-logo" alt="logo" />
       </LogoLink>
       <div className="Header-links">
-        <Link to="/cart">
-          Cart
-        </Link>
+        <CartIcon />
         <SIconButton
           size={'large'}
           onClick={() => dispatch(setMode())}

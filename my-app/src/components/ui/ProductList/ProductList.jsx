@@ -1,9 +1,10 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addProduct} from "../../../slices/cart";
 import {Grid, IconButton, Paper, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import {AddShoppingCart} from "@mui/icons-material";
 import {useData} from "../../../contexts/data";
+import {selectMode} from "../../../slices/ui";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ const ProductVisio = styled(Paper)`
 const ProductList = () => {
   const { data: products } = useData()
   const dispatch = useDispatch();
+  const mode = useSelector(selectMode)
 
   return (
     <Wrapper>
@@ -35,7 +37,7 @@ const ProductList = () => {
           <Grid item xs={12} md={4} key={product.id}>
             <ProductVisio>
               <Top>
-                <Typography variant={'subtitle1'}>{product.title}</Typography>
+                <Typography variant={'subtitle1'} color={mode === 'light' ? 'primary' : 'secondary'}>{product.title}</Typography>
                 <IconButton onClick={() => dispatch(addProduct(product))}>
                   <AddShoppingCart />
                 </IconButton>
