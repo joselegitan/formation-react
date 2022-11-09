@@ -30,7 +30,6 @@ export const DataProvider = ({ children }) => {
   }, [skip])
 
   useEffect(() => {
-    // console.log('start')
     (async () => await fetchData())()
   }, [])
 
