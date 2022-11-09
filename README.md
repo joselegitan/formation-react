@@ -2,8 +2,9 @@
 
 ## Exercice 3
 ### Utiliser Redux 
-- Creer un context au niveau de la home-page permettant de choisir l'affichage d'une page avec un titre, un boutton fetchMore et une liste des donnees associees (posts ou photos)
-- Chaque post/photo doit avoir un select permettant de choisir une quantite et un boutton acheter pour enregistrer la commande
+- Creer un context au niveau de la home-page permettant de gerer les donnees 
+- La homepage doit contenir une liste de donnee
+- Chaque post/photo doit avoir un boutton acheter pour enregistrer la commande
 - le Header doit avoir une icone avec le nombre de produit 'achete' et un boutton permettant de changer la couleur du titre 
 - Creer 2 stores : 1 UI (ex light/dark mode) et 1 gestion panier
 
