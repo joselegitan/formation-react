@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import axios from "axios";
+import Head from "next/head";
 
 const StyledPage = styled.div`
   display: flex;
@@ -13,10 +14,16 @@ const StyledPage = styled.div`
 
 export function Index({ post }) {
   return (
-    <StyledPage>
-      <h1>{post?.title}</h1>
-      <p>{post?.body}</p>
-    </StyledPage>
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <StyledPage>
+        <h1>{post?.title}</h1>
+        <p>{post?.body}</p>
+      </StyledPage>
+    </>
+
   );
 }
 
