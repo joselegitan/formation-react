@@ -29,7 +29,7 @@ const CartIcon = () => {
   const products = useSelector(getCartProducts)
 
   return (
-    <LogoLink to={'/cart'}>
+    <LogoLink href={'/cart'}>
       <Wrapper>
         <SShoppingCart />
         {products.length > 0 && (

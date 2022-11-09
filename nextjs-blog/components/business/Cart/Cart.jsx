@@ -15,11 +15,16 @@ const Cart = () => {
   const products = useSelector(getCartProducts)
   const dispatch = useDispatch();
 
+  const onRemove = (id) => () => {
+    console.log('id', id)
+    dispatch(removeProduct(id))
+  }
+
   return (
     <Wrapper>
       {products.length > 0
         ? products.map((product) => (
-          <ProductItem key={product.id} {...product} onRemove={() => dispatch(removeProduct())} />
+          <ProductItem key={product.id} {...product} onRemove={onRemove(product.id)} />
         ))
         : <Typography variant={'subtitle2'}>Aucun produit</Typography>
       }

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import {Link as RouterLink} from "react-router-dom";
+import NextLink from "next/link";
 
-export const Link = styled(RouterLink)`
+export const Link = styled(NextLink)`
   width: 50px;
   height: 50px;
   padding: 5px 10px;
@@ -11,6 +11,6 @@ export const Link = styled(RouterLink)`
   color: white;
 `
 
-export const LogoLink = styled(Link)`
+export const LogoLink = styled(NextLink)`
   padding: 0;
 `

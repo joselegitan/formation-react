@@ -26,14 +26,15 @@ const ProductVisio = styled(Paper)`
 `
 
 const ProductList = () => {
-  const { data: products } = useData()
+  const { product, loading, fetchMore } = useData()
+
   const dispatch = useDispatch();
   const mode = useSelector(selectMode)
 
   return (
     <Wrapper>
       <Grid container spacing={2}>
-        {products.map((product) => (
+        {data.map((product) => (
           <Grid item xs={12} md={4} key={product.id}>
             <ProductVisio>
               <Top>
@@ -47,6 +48,7 @@ const ProductList = () => {
           </Grid>
         ))}
       </Grid>
+      <button onClick={fetchMore}>+</button>
     </Wrapper>
   )
 }

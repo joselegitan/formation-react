@@ -1,3 +1,5 @@
+import {createTheme} from "@mui/material";
+import {red} from "@mui/material/colors";
 
 export const breakpoints = {
   breakpoints: {
@@ -105,7 +107,7 @@ export const getDesignTokens = (mode) => ({
 
 export const getTypography = (themeWithBreakpoints) => ({
   typography: {
-    fontFamily: 'Circular, Helvetica Neue, Arial, sans-serif',
+    fontFamily: 'Helvetica Neue, Arial, sans-serif',
     h1: {
       fontFamily: 'Circular',
       fontWeight: 'bold',
@@ -220,6 +222,20 @@ export const getTypography = (themeWithBreakpoints) => ({
         fontSize: themeWithBreakpoints.typography.pxToRem(22),
         lineHeight: 1,
       },
+    },
+  },
+});
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#556cd6',
+    },
+    secondary: {
+      main: '#19857b',
+    },
+    error: {
+      main: red.A400,
     },
   },
 });

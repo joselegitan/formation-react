@@ -1,25 +1,28 @@
 import Head from "next/head";
-import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 
 import {DataProvider} from "../contexts/data";
-import {useMemo} from "react";
-import {breakpoints, componentsOverride, getDesignTokens, getTypography} from "../lib/theme";
+import {theme} from "../lib/theme";
+import {store} from "../store";
+import {Provider} from "react-redux";
+import '../App.css'
 
 export default function MyApp(props) {
   const { Component, pageProps } = props
 
-  const theme = useMemo(() => {
-    const initThemeWithBreakpoints = createTheme(
-      breakpoints,
-      getDesignTokens('light'),
-      componentsOverride
-    );
-
-    return createTheme(
-      initThemeWithBreakpoints,
-      getTypography(initThemeWithBreakpoints)
-    );
-  }, []);
+  // Pour custom un peu plus le theme
+  // const theme = useMemo(() => {
+  //   const initThemeWithBreakpoints = createTheme(
+  //     breakpoints,
+  //     getDesignTokens('light'),
+  //     componentsOverride
+  //   );
+  //
+  //   return createTheme(
+  //     initThemeWithBreakpoints,
+  //     getTypography(initThemeWithBreakpoints)
+  //   );
+  // }, []);
 
   return (
     <>
@@ -31,12 +34,14 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <DataProvider>
-          <Component {...pageProps} />
-        </DataProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <DataProvider>
+            <Component {...pageProps} />
+          </DataProvider>
+        </ThemeProvider>
+      </Provider>
     </>
   )
 }

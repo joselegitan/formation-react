@@ -1,4 +1,4 @@
-import './Header.css';
+import styles from './Header.module.css';
 import IconButton from "../IconButton/IconButton";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -17,11 +17,11 @@ function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="App-header">
-      <LogoLink to={'/'}>
+    <header className={styles['App-header']}>
+      <LogoLink href={'/'}>
         <img src={'/logo.svg'} className="App-logo" alt="logo" />
       </LogoLink>
-      <div className="Header-links">
+      <div className={styles['Header-links']}>
         <CartIcon />
         <SIconButton
           size={'large'}

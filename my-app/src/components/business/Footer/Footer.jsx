@@ -1,12 +1,11 @@
-import logo from '../../../logo.svg';
-import './Footer.css';
+import styles from './Footer.module.css';
 
 function Footer() {
   return (
-    <footer className="App-footer">
-      <div className="Footer-content">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div className="Footer-links">
+    <footer className={styles["App-footer"]}>
+      <div className={styles["Footer-content"]}>
+        <img src={'/logo.svg'} className="App-logo" alt="logo" />
+        <div className={styles["Footer-links"]}>
           <a
             className="App-link"
             href="https://reactjs.org"

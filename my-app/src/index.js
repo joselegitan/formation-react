@@ -27,15 +27,48 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/*<Provider store={store}>*/}
       <DataProvider>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+        <UiProvider>
+          {/*<ThemeProvider theme={theme}>*/}
+            <HomePage />
+          <CoolPage />
+            {/*<RouterProvider router={router} />*/}
+          {/*</ThemeProvider>*/}
+        </UiProvider>
       </DataProvider>
-    </Provider>
+    {/*</Provider>*/}
   </React.StrictMode>
 );
+
+const UIProvider = ({ children }) {
+  const { user } = useUser()
+  const [mode, setMode] = useState('light')
+
+  const [toasts, setToasts] = useState([])
+
+  function addToast(toast) {
+    toasts.push(toast)
+  }
+
+  return (
+    <UiContext.Provider value={{ addToast }}>
+      <ThemeProvider theme={getTheme(mode)}>
+        <HomePage />
+        <CoolPage />
+        {toasts.length > 0 && (
+          <toastWrap>
+            {toasts.map(e => <Toast {...e} />)}
+          </toastWrap>
+        )}
+      </ThemeProvider>
+    </UiContext.Provider>
+  )
+}
+
+export const useUi = useContext(UiContext)
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

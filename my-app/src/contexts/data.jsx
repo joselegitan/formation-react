@@ -6,14 +6,14 @@ import {
 import axios from "axios";
 
 export const DataContext = createContext({
-  data: [],
+  product: [],
   loading: false,
   fetchMore: async () => {},
   postData: async () => {}
 });
 
 export const DataProvider = ({ children }) => {
-  const [data, setData] = useState([])
+  const [product, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [skip, setSkip] = useState(0)
 
@@ -47,12 +47,7 @@ export const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{
-        data,
-        loading,
-        fetchMore,
-        postData,
-      }}
+      value={{}}
     >
       {children}
     </DataContext.Provider>
