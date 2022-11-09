@@ -1,5 +1,7 @@
 # Formation React
 
+https://nextjs.org/learn/basics/create-nextjs-app
+
 ## Exercice 3
 ### Utiliser Redux 
 - Creer un context au niveau de la home-page permettant de choisir l'affichage d'une page avec un titre, un boutton fetchMore et une liste des donnees associees (posts ou photos)
